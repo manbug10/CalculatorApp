@@ -2,15 +2,20 @@ package com.flow.calculator.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.flow.calculator.domain.calculator.CalculatorMode
+import com.flow.calculator.ui.components.CalculatorButton
 import com.flow.calculator.ui.components.CalculatorDisplay
+import com.flow.calculator.ui.components.HistoryPanel
+import com.flow.calculator.ui.components.ScientificButton
+import com.flow.calculator.ui.components.WideCalculatorButton
 import com.flow.calculator.ui.theme.CalculatorTheme
 
 /**
@@ -90,31 +95,6 @@ fun BasicButtonsPreviewLight() {
                         contentColor = MaterialTheme.colorScheme.onPrimaryContainer
                     )
                 }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    CalculatorButton(text = "1", onClick = {})
-                    CalculatorButton(text = "2", onClick = {})
-                    CalculatorButton(text = "3", onClick = {})
-                    CalculatorButton(
-                        text = "+",
-                        onClick = {},
-                        backgroundColor = MaterialTheme.colorScheme.primaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    CalculatorButton(text = "0", onClick = {})
-                    CalculatorButton(text = ".", onClick = {})
-                    CalculatorButton(
-                        text = "=",
-                        onClick = {},
-                        backgroundColor = MaterialTheme.colorScheme.primary,
-                        contentColor = MaterialTheme.colorScheme.onPrimary
-                    )
-                }
             }
         }
     }
@@ -134,7 +114,6 @@ fun ScientificButtonsPreview() {
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                // Scientific row
                 Row(
                     horizontalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
@@ -152,15 +131,6 @@ fun ScientificButtonsPreview() {
                     ScientificButton(text = "√", onClick = {})
                     ScientificButton(text = "∛", onClick = {})
                     ScientificButton(text = "x^y", onClick = {})
-                }
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    ScientificButton(text = "π", onClick = {})
-                    ScientificButton(text = "e", onClick = {})
-                    ScientificButton(text = "n!", onClick = {})
-                    ScientificButton(text = "(", onClick = {})
-                    ScientificButton(text = ")", onClick = {})
                 }
             }
         }
@@ -180,7 +150,6 @@ fun FullBasicModePreviewLight() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                // Top bar simulation
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -189,29 +158,21 @@ fun FullBasicModePreviewLight() {
                 ) {
                     Text("Calculator", style = MaterialTheme.typography.titleLarge)
                     Row {
-                        IconButton(onClick = {}) {
-                            Text("🔬")
-                        }
-                        IconButton(onClick = {}) {
-                            Text("📜")
-                        }
+                        IconButton(onClick = {}) { Text("🔬") }
+                        IconButton(onClick = {}) { Text("📜") }
                     }
                 }
                 
-                // Display
                 CalculatorDisplay(
                     expression = "1250 + 500 × 2",
                     result = "2250",
                     modifier = Modifier.weight(1f)
                 )
                 
-                // Keyboard area
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(2f)
-                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     BasicCalculatorKeyboard(
                         onDigitClick = {},
@@ -239,7 +200,6 @@ fun FullBasicModePreviewDark() {
                     .fillMaxSize()
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                // Top bar simulation
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -248,29 +208,21 @@ fun FullBasicModePreviewDark() {
                 ) {
                     Text("Calculator", style = MaterialTheme.typography.titleLarge)
                     Row {
-                        IconButton(onClick = {}) {
-                            Text("🔬")
-                        }
-                        IconButton(onClick = {}) {
-                            Text("📜")
-                        }
+                        IconButton(onClick = {}) { Text("🔬") }
+                        IconButton(onClick = {}) { Text("📜") }
                     }
                 }
                 
-                // Display
                 CalculatorDisplay(
                     expression = "1250 + 500 × 2",
                     result = "2250",
                     modifier = Modifier.weight(1f)
                 )
                 
-                // Keyboard area
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(2f)
-                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     BasicCalculatorKeyboard(
                         onDigitClick = {},
@@ -289,87 +241,6 @@ fun FullBasicModePreviewDark() {
 }
 
 /**
- * Preview completo - Modo Científico
- */
-@Preview(name = "Full Scientific Mode", widthDp = 360, heightDp = 720)
-@Composable
-fun FullScientificModePreview() {
-    CalculatorTheme(darkTheme = false) {
-        Surface {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-            ) {
-                // Top bar simulation
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text("Calculator", style = MaterialTheme.typography.titleLarge)
-                    Row {
-                        IconButton(onClick = {}) {
-                            Text("📱")
-                        }
-                        IconButton(onClick = {}) {
-                            Text("📜")
-                        }
-                    }
-                }
-                
-                // Display
-                CalculatorDisplay(
-                    expression = "sin(30) + √144",
-                    result = "12.5",
-                    modifier = Modifier.weight(1f)
-                )
-                
-                // Keyboard area
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .weight(2.5f)
-                        .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-                        .background(MaterialTheme.colorScheme.surface)
-                ) {
-                    ScientificCalculatorKeyboard(
-                        onDigitClick = {},
-                        onOperatorClick = {},
-                        onDecimalClick = {},
-                        onEqualsClick = {},
-                        onClearClick = {},
-                        onClearEntryClick = {},
-                        onPercentClick = {},
-                        onNegateClick = {},
-                        onSinClick = {},
-                        onCosClick = {},
-                        onTanClick = {},
-                        onLogClick = {},
-                        onLnClick = {},
-                        onSquareClick = {},
-                        onCubeClick = {},
-                        onSquareRootClick = {},
-                        onCubeRootClick = {},
-                        onPowerClick = {},
-                        onFactorialClick = {},
-                        onPiClick = {},
-                        onEClick = {},
-                        onParenthesisClick = {},
-                        onMemoryClear = {},
-                        onMemoryRecall = {},
-                        onMemoryAdd = {},
-                        onMemorySubtract = {},
-                        onMemoryStore = {}
-                    )
-                }
-            }
-        }
-    }
-}
-
-/**
  * Preview del panel de historial
  */
 @Preview(name = "History Panel")
@@ -377,23 +248,17 @@ fun FullScientificModePreview() {
 fun HistoryPanelPreview() {
     CalculatorTheme(darkTheme = false) {
         Surface {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)
-            ) {
-                HistoryPanel(
-                    history = listOf(
-                        "1250 + 500 = 1750",
-                        "√144 = 12",
-                        "sin(30) = 0.5",
-                        "25 × 4 = 100",
-                        "100 ÷ 4 = 25"
-                    ),
-                    onDismiss = {},
-                    onClear = {}
-                )
-            }
+            HistoryPanel(
+                history = listOf(
+                    "1250 + 500 = 1750",
+                    "√144 = 12",
+                    "sin(30) = 0.5",
+                    "25 × 4 = 100",
+                    "100 ÷ 4 = 25"
+                ),
+                onDismiss = {},
+                onClear = {}
+            )
         }
     }
 }

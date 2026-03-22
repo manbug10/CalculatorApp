@@ -36,7 +36,6 @@ class CalculatorEngine @Inject constructor() {
     }
     
     private fun evaluateExpression(expression: String): Double {
-        // Handle basic operations
         return when {
             expression.contains("+") -> {
                 val parts = expression.split("+", limit = 2)
@@ -93,7 +92,7 @@ class CalculatorEngine @Inject constructor() {
             }
             expression.startsWith("ln") -> {
                 val value = expression.removePrefix("ln").removePrefix("(").removeSuffix(")").toDoubleOrNull() ?: 0.0
-                log(value)
+                ln(value)
             }
             else -> expression.toDoubleOrNull() ?: 0.0
         }
@@ -126,7 +125,7 @@ class CalculatorEngine @Inject constructor() {
         if (value < 0) Result.failure(IllegalArgumentException("Cannot calculate square root of negative number"))
         else Result.success(sqrt(value))
     fun cubeRoot(value: Double): Double = cbrt(value)
-    fun power(base: Double, exponent: Double): Double = pow(base, exponent)
+    fun power(base: Double, exponent: Double): Double = base.pow(exponent)
     fun factorial(value: Int): Result<Long> {
         if (value < 0) return Result.failure(IllegalArgumentException("Factorial of negative number"))
         if (value > 20) return Result.failure(IllegalArgumentException("Number too large"))
@@ -135,11 +134,11 @@ class CalculatorEngine @Inject constructor() {
     
     // Trigonometric
     fun sin(value: Double, isDegrees: Boolean = true): Double = 
-        sin(if (isDegrees) Math.toRadians(value) else value)
+        kotlin.math.sin(if (isDegrees) Math.toRadians(value) else value)
     fun cos(value: Double, isDegrees: Boolean = true): Double = 
-        cos(if (isDegrees) Math.toRadians(value) else value)
+        kotlin.math.cos(if (isDegrees) Math.toRadians(value) else value)
     fun tan(value: Double, isDegrees: Boolean = true): Double = 
-        tan(if (isDegrees) Math.toRadians(value) else value)
+        kotlin.math.tan(if (isDegrees) Math.toRadians(value) else value)
     
     // Logarithmic
     fun log10(value: Double): Result<Double> = 
@@ -147,7 +146,7 @@ class CalculatorEngine @Inject constructor() {
         else Result.success(log10(value))
     fun ln(value: Double): Result<Double> = 
         if (value <= 0) Result.failure(IllegalArgumentException("Log of non-positive number"))
-        else Result.success(log(value))
+        else Result.success(ln(value))
     
     // Constants
     fun getPi(): Double = Math.PI

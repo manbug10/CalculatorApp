@@ -225,6 +225,7 @@ class CalculatorViewModel @Inject constructor(
                     isError = true
                 )
             }
+            else -> {}
         }
     }
     

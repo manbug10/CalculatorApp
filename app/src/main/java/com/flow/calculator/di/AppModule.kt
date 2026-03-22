@@ -8,6 +8,7 @@ import com.flow.calculator.domain.usecase.ClearHistoryUseCase
 import com.flow.calculator.domain.usecase.GetHistoryUseCase
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton

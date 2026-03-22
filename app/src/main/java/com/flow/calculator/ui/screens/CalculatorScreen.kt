@@ -2,22 +2,22 @@ package com.flow.calculator.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.HistoryToggleOff
+import androidx.compose.material.icons.automirrored.filled.History
+import androidx.compose.material.icons.automirrored.filled.HistoryToggleOff
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material.icons.filled.Smartphone
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.flow.calculator.domain.calculator.CalculatorMode
 import com.flow.calculator.ui.components.CalculatorDisplay
 import com.flow.calculator.ui.components.HistoryPanel
 import com.flow.calculator.ui.viewmodel.CalculatorViewModel
-import com.flow.calculator.ui.viewmodel.CalculatorUiState
 
 /**
  * Main calculator screen
@@ -37,12 +37,12 @@ fun CalculatorScreen(
                     // Mode toggle button
                     IconButton(onClick = { viewModel.toggleMode() }) {
                         Icon(
-                            imageVector = if (uiState.mode == com.flow.calculator.domain.calculator.CalculatorMode.SCIENTIFIC) {
+                            imageVector = if (uiState.mode == CalculatorMode.SCIENTIFIC) {
                                 Icons.Default.Smartphone
                             } else {
                                 Icons.Default.Science
                             },
-                            contentDescription = if (uiState.mode == com.flow.calculator.domain.calculator.CalculatorMode.SCIENTIFIC) {
+                            contentDescription = if (uiState.mode == CalculatorMode.SCIENTIFIC) {
                                 "Switch to Basic Mode"
                             } else {
                                 "Switch to Scientific Mode"
@@ -53,9 +53,9 @@ fun CalculatorScreen(
                     IconButton(onClick = { viewModel.toggleHistory() }) {
                         Icon(
                             imageVector = if (uiState.isHistoryVisible) {
-                                Icons.Default.HistoryToggleOff
+                                Icons.AutoMirrored.Filled.HistoryToggleOff
                             } else {
-                                Icons.Default.History
+                                Icons.AutoMirrored.Filled.History
                             },
                             contentDescription = if (uiState.isHistoryVisible) {
                                 "Hide History"
@@ -102,7 +102,7 @@ fun CalculatorScreen(
                     .weight(0.7f)
                     .fillMaxWidth()
             ) {
-                if (uiState.mode == com.flow.calculator.domain.calculator.CalculatorMode.BASIC) {
+                if (uiState.mode == CalculatorMode.BASIC) {
                     BasicCalculatorKeyboard(
                         onDigitClick = viewModel::onDigitClick,
                         onOperatorClick = viewModel::onOperatorClick,
