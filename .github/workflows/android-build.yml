@@ -28,23 +28,14 @@ jobs:
 
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
-      
-    - name: Setup Android Command Line Tools
-      run: |
-        sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
-    - name: Accept licenses
+    - name: Fix line endings
       run: |
-        yes | sdkmanager --licenses
-
-    - name: Make gradlew executable
-      run: chmod +x gradlew
+        sed -i 's/\r$//' gradlew
+        chmod +x gradlew
 
     - name: Build Debug APK
-      run: |
-        ./gradlew --version
-        ./gradlew tasks --all | grep assemble
-        ./gradlew :app:assembleDebug --no-daemon --stacktrace
+      run: ./gradlew :app:assembleDebug --no-daemon
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4

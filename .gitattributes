@@ -1,0 +1,21 @@
+# Force LF line endings for shell scripts
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+*.sh text eol=lf
+
+# Kotlin source files
+*.kt text
+*.kts text
+
+# YAML workflows
+.github/workflows/*.yml text eol=lf
+
+# Properties and TOML
+*.properties text
+*.toml text
+
+# Markdown
+*.md text
+
+# XML
+*.xml text
