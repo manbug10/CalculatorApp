@@ -1,0 +1,47 @@
+# Gradle
+.gradle/
+build/
+!**/src/main/**
+!**/src/test/**
+!**/src/androidTest/**
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# Android
+local.properties
+app/src/main/assets/
+app/src/main/res/values/google_services.xml
+app/src/main/res/values/google-services.xml
+app/google-services.json
+app/debug.keystore
+captures/
+*.hprof
+
+# Keystore
+*.jks
+*.keystore
+!dummy.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Gradle wrapper (se descarga automáticamente)
+# gradle/wrapper/gradle-wrapper.jar
+
+# Build outputs (opcional - para no subir APKs al repo)
+app/build/
+app/.cxx/
+**/build/

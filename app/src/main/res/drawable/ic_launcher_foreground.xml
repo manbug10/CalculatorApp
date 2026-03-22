@@ -1,0 +1,71 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Calculator body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M34,34h40v40h-40z"
+        android:strokeWidth="0"/>
+    
+    <!-- Display -->
+    <path
+        android:fillColor="#E3F2FD"
+        android:pathData="M38,38h32v10h-32z"
+        android:strokeWidth="0"/>
+    
+    <!-- Buttons row 1 -->
+    <path
+        android:fillColor="#FF7043"
+        android:pathData="M38,52h6v6h-6z"/>
+    <path
+        android:fillColor="#FF7043"
+        android:pathData="M46,52h6v6h-6z"/>
+    <path
+        android:fillColor="#FF7043"
+        android:pathData="M54,52h6v6h-6z"/>
+    <path
+        android:fillColor="#FFA726"
+        android:pathData="M62,52h6v6h-6z"/>
+    
+    <!-- Buttons row 2 -->
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M38,60h6v6h-6z"/>
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M46,60h6v6h-6z"/>
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M54,60h6v6h-6z"/>
+    <path
+        android:fillColor="#FFA726"
+        android:pathData="M62,60h6v6h-6z"/>
+    
+    <!-- Buttons row 3 -->
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M38,68h6v6h-6z"/>
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M46,68h6v6h-6z"/>
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M54,68h6v6h-6z"/>
+    <path
+        android:fillColor="#FFA726"
+        android:pathData="M62,68h6v6h-6z"/>
+    
+    <!-- Buttons row 4 -->
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M38,76h6v6h-6z"/>
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M46,76h14v6h-14z"/>
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M62,76h6v6h-6z"/>
+</vector>

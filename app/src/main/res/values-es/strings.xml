@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora</string>
+    
+    <!-- Basic Calculator -->
+    <string name="clear">C</string>
+    <string name="clear_entry">CE</string>
+    <string name="percent">%</string>
+    <string name="divide">÷</string>
+    <string name="multiply">×</string>
+    <string name="subtract">−</string>
+    <string name="add">+</string>
+    <string name="equals">=</string>
+    <string name="negate">+/-</string>
+    <string name="decimal">.</string>
+    
+    <!-- Scientific Calculator -->
+    <string name="sin">sen</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
+    <string name="log">log</string>
+    <string name="ln">ln</string>
+    <string name="square">x²</string>
+    <string name="cube">x³</string>
+    <string name="square_root">√</string>
+    <string name="cube_root">∛</string>
+    <string name="power">x^y</string>
+    <string name="factorial">n!</string>
+    <string name="pi">π</string>
+    <string name="e">e</string>
+    <string name="parenthesis_open">(</string>
+    <string name="parenthesis_close">)</string>
+    
+    <!-- Memory -->
+    <string name="memory_clear">MC</string>
+    <string name="memory_recall">MR</string>
+    <string name="memory_add">M+</string>
+    <string name="memory_subtract">M-</string>
+    <string name="memory_store">MS</string>
+    
+    <!-- UI -->
+    <string name="history">Historial</string>
+    <string name="clear_history">Borrar Historial</string>
+    <string name="close">Cerrar</string>
+    <string name="basic_mode">Modo Básico</string>
+    <string name="scientific_mode">Modo Científico</string>
+    <string name="show_history">Mostrar Historial</string>
+    <string name="hide_history">Ocultar Historial</string>
+    
+    <!-- Errors -->
+    <string name="error_division_by_zero">División por cero</string>
+    <string name="error_invalid_operation">Operación inválida</string>
+    <string name="error">Error</string>
+</resources>
